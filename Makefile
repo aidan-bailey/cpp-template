@@ -1,7 +1,7 @@
 CXX := g++
 CXXFLAGS := --std=c++11 -ggdb -Wall -lm
 OBJ  := obj
-TARGET   := Template
+TARGET   := template
 INCLUDE  := -Ilibs/ -Iinclude/
 SRC      := $(wildcard src/*.cpp) \
 
