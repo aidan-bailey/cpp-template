@@ -21,11 +21,12 @@ $(TARGET): $(OBJECTS)
 
 development:
 	compiledb make
+tags:
 	ctags -R --exclude compile_commands.json --exclude .* --exclude docs --exclude dataset --exclude Makefile .
 
 build:
 	@mkdir -p $(OBJ)
 
 clean:
-	-@rm -rvf $(OBJ)/*
+	-@rm -rvf $(OBJ)
 	-@rm -rvf Template
