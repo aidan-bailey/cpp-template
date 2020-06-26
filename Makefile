@@ -23,7 +23,7 @@ development:
 	compiledb make
 
 tags:
-	ctags -R --exclude compile_commands.json --exclude .* --exclude docs --exclude dataset --exclude Makefile .
+	ctags -R --exclude compile_commands.json --exclude .* --exclude docs --exclude Makefile .
 
 build:
 	@mkdir -p $(OBJ)
