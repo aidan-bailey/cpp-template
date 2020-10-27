@@ -1,33 +1,44 @@
+BINNAME := template
+
 CXX := g++
-CXXFLAGS := --std=c++11 -ggdb -Wall -lm
-OBJ  := obj
-TARGET   := template
-INCLUDE  := -Ilibs/ -Iinclude/
-SRC      := $(wildcard src/*.cpp) \
+SRCDIR := src
+OBJDIR := obj
+BINDIR := bin
+SRCEXT := cpp
 
-OBJECTS  := $(SRC:%.cpp=$(OBJ)/%.o)
+TARGET := $(BINDIR)/$(BINNAME)
+TESTER := $(BINDIR)/tester
 
-all: build $(TARGET)
+SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
+OBJECTS := $(patsubst $(SRCDIR)/%,$(OBJDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
+CXXFLAGS := -g # -ggdb -Wall -lm
+LIB := -L lib
+INC := -I include
 
-$(OBJ)/%.o: %.cpp
-	@mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -o $@
 
 $(TARGET): $(OBJECTS)
-	@mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $^
+	@echo " Linking..."
+	@echo " $(CXX) $^ -o $(TARGET) $(LIB)"; $(CXX) $^ -o $(TARGET) $(LIB)
 
-.PHONY: all build clean development testing
 
-development:
-	compiledb make
+$(OBJDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
+	@echo " Building.."
+	@mkdir -p $(OBJDIR)
+	@echo " $(CXX) $(CXXFLAGS) $(INC) -c -o $@ $<"; $(CXX) $(CFLAGS) $(INC) -c -o $@ $<
 
-tags:
-	ctags -R --exclude compile_commands.json --exclude .* --exclude docs --exclude Makefile .
 
-build:
-	@mkdir -p $(OBJ)
+dev: $(TARGET)
+	@echo " Building compiler flags..."
+	@echo " compiledb -n make"; compiledb -n make
+
 
 clean:
-	-@rm -rvf $(OBJ)
-	-@rm -rvf $(TARGET)
+	@echo " Cleaning...";
+	@echo " $(RM) -r $(OBJDIR) $(TARGET) $(TESTER) compile_commands.json" ; $(RM) -r $(OBJDIR) $(TARGET) $(TESTER) compile_commands.json
+
+
+tester:
+	$(CXX) $(CXXFLAGS) test/tester.cpp $(INC) $(LIB) -o $(TESTER)
+
+
+.PHONY: clean
