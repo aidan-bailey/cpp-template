@@ -24,7 +24,7 @@ $(TARGET): $(OBJECTS)
 $(OBJDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@echo " Building.."
 	@mkdir -p $(OBJDIR)
-	@echo " $(CXX) $(CXXFLAGS) $(INC) -c -o $@ $<"; $(CXX) $(CFLAGS) $(INC) -c -o $@ $<
+	@echo " $(CXX) $(CXXFLAGS) $(INC) -c -o $@ $<"; $(CXX) $(CXXFLAGS) $(INC) -c -o $@ $<
 
 
 dev: $(TARGET)
