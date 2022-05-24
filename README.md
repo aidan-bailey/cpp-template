@@ -1,19 +1,22 @@
 # cpp-template
 My preferred directory structure for C++ projects.
 
+## Dependencies
+In its current state, `make` and `gcc` are required.
+
 ## Structure
 
-- **bin** - output executable
+- **src** - source and private files
 
-- **obj** - object files
+- **include** - public header files
+
+- **lib** - third-party dependencies
 
 - **doc** - any notes or configuration files
 
-- **include** - all project/third-party header files
+- **bin** (generated) - output executable
 
-- **lib** - additional libraries required by the project
-
-- **src** - source files
+- **obj** (generated) - object files
 
 ## Makefile
 
@@ -21,11 +24,7 @@ My preferred directory structure for C++ projects.
 
 - `make clean`
 
-## Dependencies
-
-Requires `g++` (you should have this), `make` (you should have this too), and [`compiledb`](https://github.com/nickdiego/compiledb) for the 
-compiler flag generation.
-
 ## Todo
 
 - [ ] Test suite
+- [ ] Doc examples
