@@ -2,6 +2,7 @@ BINNAME := template
 
 CXX := g++
 SRCDIR := src
+TESTDIR := test
 OBJDIR := obj
 BINDIR := bin
 SRCEXT := cpp
@@ -21,7 +22,7 @@ $(TARGET): $(OBJECTS)
 	$(CXX) $^ -o $(TARGET) $(LIB)
 
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
+$(OBJDIR)/%.o: $(SOURCES)
 	@echo "Building.."
 	@mkdir -p $(OBJDIR)
 	@mkdir -p $(BINDIR)
