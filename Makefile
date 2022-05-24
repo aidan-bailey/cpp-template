@@ -28,8 +28,8 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 
 
 clean:
-	@echo " Cleaning...";
-	@rm -r $(OBJDIR) $(TARGET) $(TESTER) compile_commands.json
+	@rm -rf $(BINDIR) $(OBJDIR) $(TARGET) $(TESTER) > /dev/null 2> /dev/null
+	@echo "Cleaned"
 
 
 tester:
