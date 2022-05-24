@@ -6,7 +6,7 @@ In its current state, `make` and `gcc` are required.
 
 ## Structure
 
-- **src** - source and private files
+- **src** - source and private header files
 
 - **include** - public header files
 
