@@ -17,14 +17,15 @@ INC := -I include
 
 
 $(TARGET): $(OBJECTS)
-	@echo " Linking..."
-	@echo " $(CXX) $^ -o $(TARGET) $(LIB)"; $(CXX) $^ -o $(TARGET) $(LIB)
+	@echo "Linking..."
+	$(CXX) $^ -o $(TARGET) $(LIB)
 
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
-	@echo " Building.."
+	@echo "Building.."
 	@mkdir -p $(OBJDIR)
-	@echo " $(CXX) $(CXXFLAGS) $(INC) -c -o $@ $<"; $(CXX) $(CXXFLAGS) $(INC) -c -o $@ $<
+	@mkdir -p $(BINDIR)
+	$(CXX) $(CXXFLAGS) $(INC) -c -o $@ $<
 
 
 clean:
