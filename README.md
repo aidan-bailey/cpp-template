@@ -17,9 +17,9 @@ My preferred directory structure for C++ projects.
 
 ## Makefile
 
-`make` - compiles source files into bin
+- `make`
 
-`make clean` - cleans project directory
+- `make clean`
 
 ## Dependencies
 
