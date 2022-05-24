@@ -27,14 +27,9 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@echo " $(CXX) $(CXXFLAGS) $(INC) -c -o $@ $<"; $(CXX) $(CXXFLAGS) $(INC) -c -o $@ $<
 
 
-dev: $(TARGET)
-	@echo " Building compiler flags..."
-	@echo " compiledb -n make"; compiledb -n make
-
-
 clean:
 	@echo " Cleaning...";
-	@echo " $(RM) -r $(OBJDIR) $(TARGET) $(TESTER) compile_commands.json" ; $(RM) -r $(OBJDIR) $(TARGET) $(TESTER) compile_commands.json
+	@rm -r $(OBJDIR) $(TARGET) $(TESTER) compile_commands.json
 
 
 tester:
