@@ -6,9 +6,9 @@ In its current state, `make` and `gcc` are required.
 
 ## Structure
 
-- **src** - source and private header files
+- **src** - source (.cc) and private header (.hh) files
 
-- **include** - public header files
+- **include** - public header (.hh) files
 
 - **lib** - third-party dependencies
 

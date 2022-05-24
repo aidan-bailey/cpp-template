@@ -4,7 +4,7 @@ CXX := g++
 SRCDIR := src
 OBJDIR := obj
 BINDIR := bin
-SRCEXT := cpp
+SRCEXT := cc
 
 TARGET := $(BINDIR)/$(BINNAME)
 
